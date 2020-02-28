@@ -9,9 +9,11 @@ var Content = require('./content.js');
 var Sidebar = require('./sidebar.js');
 
 // ES module 引入图片
+import './index.scss'
 import avatar from './avatar.jpg';
 var img = new Image();
 img.src = avatar;
+img.classList.add('avatar')
 
 var root = document.getElementById('root');
 root.appendChild(img);
