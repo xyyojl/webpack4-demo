@@ -86,14 +86,14 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src/index.js!./src/index.scss":
-/*!***************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src!./src/index.scss ***!
-  \***************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src/index.js!./src/index.scss":
+/*!*************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src!./src/index.scss ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"body .avatar {\\n  width: 200px;\\n  height: 200px;\\n  transform: translate(100px, 100px); }\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/index.scss?./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"body ._17cnVz87yzSOO5TpFdnLsk {\\n  width: 200px;\\n  height: 200px;\\n  transform: translate(100px, 100px); }\\n\", \"\"]);\n// Exports\nexports.locals = {\n\t\"avatar\": \"_17cnVz87yzSOO5TpFdnLsk\"\n};\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/index.scss?./node_modules/css-loader/dist/cjs.js??ref--5-1!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src");
 
 /***/ }),
 
@@ -144,6 +144,18 @@ eval("function Content() {\r\n    var dom = document.getElementById('root');\r\n
 
 /***/ }),
 
+/***/ "./src/createAvatar.js":
+/*!*****************************!*\
+  !*** ./src/createAvatar.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _avatar_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./avatar.jpg */ \"./src/avatar.jpg\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\r\nfunction createAvatar() {\r\n\tvar img = new Image();\r\n\timg.src = _avatar_jpg__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\r\n\timg.classList.add(_index_scss__WEBPACK_IMPORTED_MODULE_1___default.a.avatar);\r\n\r\n\tvar root = document.getElementById('root');\r\n\troot.append(img);\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (createAvatar);\n\n//# sourceURL=webpack:///./src/createAvatar.js?");
+
+/***/ }),
+
 /***/ "./src/header.js":
 /*!***********************!*\
   !*** ./src/header.js ***!
@@ -163,7 +175,7 @@ eval("function Header(){\r\n    var dom = document.getElementById('root');\r\n  
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _avatar_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./avatar.jpg */ \"./src/avatar.jpg\");\n// ES Moudule 模块引入方式\r\n/* import Header from './header.js'\r\nimport Content from './content.js'\r\nimport Sidebar from './sidebar.js' */\r\n\r\n// CommonJS 模块引入\r\nvar Header = __webpack_require__(/*! ./header.js */ \"./src/header.js\");\r\nvar Content = __webpack_require__(/*! ./content.js */ \"./src/content.js\");\r\nvar Sidebar = __webpack_require__(/*! ./sidebar.js */ \"./src/sidebar.js\");\r\n\r\n// ES module 引入图片\r\n\r\n\r\nvar img = new Image();\r\nimg.src = _avatar_jpg__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\r\nimg.classList.add('avatar')\r\n\r\nvar root = document.getElementById('root');\r\nroot.appendChild(img);\r\n\r\nnew Header();\r\nnew Content();\r\nnew Sidebar();\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ \"./src/index.scss\");\n/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _avatar_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./avatar.jpg */ \"./src/avatar.jpg\");\n/* harmony import */ var _createAvatar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./createAvatar */ \"./src/createAvatar.js\");\n// ES Moudule 模块引入方式\r\n/* import Header from './header.js'\r\nimport Content from './content.js'\r\nimport Sidebar from './sidebar.js' */\r\n\r\n// CommonJS 模块引入\r\nvar Header = __webpack_require__(/*! ./header.js */ \"./src/header.js\");\r\nvar Content = __webpack_require__(/*! ./content.js */ \"./src/content.js\");\r\nvar Sidebar = __webpack_require__(/*! ./sidebar.js */ \"./src/sidebar.js\");\r\n\r\n// ES module 引入图片\r\n// import './index.scss'\r\n\r\n\r\nvar img = new Image();\r\nimg.src = _avatar_jpg__WEBPACK_IMPORTED_MODULE_1__[\"default\"];\r\nimg.classList.add(_index_scss__WEBPACK_IMPORTED_MODULE_0___default.a.avatar);\r\n\r\nvar root = document.getElementById('root');\r\nroot.appendChild(img);\r\n\r\n\r\n\r\nObject(_createAvatar__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\r\n\r\nnew Header();\r\nnew Content();\r\nnew Sidebar();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
@@ -174,7 +186,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ind
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n            var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!../node_modules/postcss-loader/src!./index.scss */ \"./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src/index.js!./src/index.scss\");\n\n            content = content.__esModule ? content.default : content;\n\n            if (typeof content === 'string') {\n              content = [[module.i, content, '']];\n            }\n\nvar options = {};\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = api(content, options);\n\nvar exported = content.locals ? content.locals : {};\n\n\n\nmodule.exports = exported;\n\n//# sourceURL=webpack:///./src/index.scss?");
+eval("var api = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\");\n            var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js??ref--5-1!../node_modules/sass-loader/dist/cjs.js!../node_modules/postcss-loader/src!./index.scss */ \"./node_modules/css-loader/dist/cjs.js?!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/src/index.js!./src/index.scss\");\n\n            content = content.__esModule ? content.default : content;\n\n            if (typeof content === 'string') {\n              content = [[module.i, content, '']];\n            }\n\nvar options = {};\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = api(content, options);\n\nvar exported = content.locals ? content.locals : {};\n\n\n\nmodule.exports = exported;\n\n//# sourceURL=webpack:///./src/index.scss?");
 
 /***/ }),
 
