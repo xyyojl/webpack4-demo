@@ -4,4 +4,5 @@ function Sidebar() {
     sidebar.innerText = 'sidebar'
     dom.appendChild(sidebar);
 }
-export default Sidebar;
+// export default Sidebar;
+module.exports = Sidebar;

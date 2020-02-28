@@ -4,4 +4,5 @@ function Content() {
     content.innerText = 'content'
     dom.appendChild(content);
 }
-export default Content;
+// export default Content;
+module.exports = Content;

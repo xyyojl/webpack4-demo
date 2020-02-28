@@ -4,4 +4,6 @@ function Header(){
     header.innerText = 'header'
     dom.appendChild(header);
 }
-export default Header;
+// ES Moudule 导出模块
+// export default Header;
+module.exports = Header;
