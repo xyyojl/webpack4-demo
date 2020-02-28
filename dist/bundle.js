@@ -86,6 +86,18 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/avatar.jpg":
+/*!************************!*\
+  !*** ./src/avatar.jpg ***!
+  \************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"492ed7484e95ea849d996fae4a807c39.jpg\");\n\n//# sourceURL=webpack:///./src/avatar.jpg?");
+
+/***/ }),
+
 /***/ "./src/content.js":
 /*!************************!*\
   !*** ./src/content.js ***!
@@ -112,10 +124,11 @@ eval("function Header(){\r\n    var dom = document.getElementById('root');\r\n  
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// ES Moudule 模块引入方式\r\n/* import Header from './header.js'\r\nimport Content from './content.js'\r\nimport Sidebar from './sidebar.js' */\r\n\r\n// CommonJS 模块引入\r\nvar Header = __webpack_require__(/*! ./header.js */ \"./src/header.js\");\r\nvar Content = __webpack_require__(/*! ./content.js */ \"./src/content.js\");\r\nvar Sidebar = __webpack_require__(/*! ./sidebar.js */ \"./src/sidebar.js\");\r\n\r\nnew Header();\r\nnew Content();\r\nnew Sidebar();\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _avatar_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./avatar.jpg */ \"./src/avatar.jpg\");\n// ES Moudule 模块引入方式\r\n/* import Header from './header.js'\r\nimport Content from './content.js'\r\nimport Sidebar from './sidebar.js' */\r\n\r\n// CommonJS 模块引入\r\nvar Header = __webpack_require__(/*! ./header.js */ \"./src/header.js\");\r\nvar Content = __webpack_require__(/*! ./content.js */ \"./src/content.js\");\r\nvar Sidebar = __webpack_require__(/*! ./sidebar.js */ \"./src/sidebar.js\");\r\n\r\n// ES module 引入图片\r\n\r\nvar img = new Image();\r\nimg.src = _avatar_jpg__WEBPACK_IMPORTED_MODULE_0__[\"default\"];\r\n\r\nvar root = document.getElementById('root');\r\nroot.appendChild(img);\r\n\r\nnew Header();\r\nnew Content();\r\nnew Sidebar();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 

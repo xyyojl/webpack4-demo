@@ -8,6 +8,14 @@ var Header = require('./header.js');
 var Content = require('./content.js');
 var Sidebar = require('./sidebar.js');
 
+// ES module 引入图片
+import avatar from './avatar.jpg';
+var img = new Image();
+img.src = avatar;
+
+var root = document.getElementById('root');
+root.appendChild(img);
+
 new Header();
 new Content();
 new Sidebar();
