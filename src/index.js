@@ -6,7 +6,12 @@ import Sidebar from './sidebar.js' */
 // CommonJS 模块引入
 /* var Header = require('./header.js');
 var Content = require('./content.js');
-var Sidebar = require('./sidebar.js'); */
+var Sidebar = require('./sidebar.js'); 
+
+new Header();
+new Content();
+new Sidebar(); 
+ */
 
 // ES module 引入图片
 // import './index.scss'
@@ -22,8 +27,5 @@ root.appendChild(img); */
 /* import createAvatar from './createAvatar';
 
 createAvatar();
-
-new Header();
-new Content();
-new Sidebar(); */
-console.log(111);
+*/
+console.log(2333);

@@ -10,6 +10,10 @@ module.exports = {
         main: './src/index.js'
     },
     devtool: 'source-map',
+    devServer: {
+        contentBase: './dist',
+        open: true
+    },
     module: {
         rules: [{
             test: /\.(jpg|png|gif)$/,
@@ -42,6 +46,7 @@ module.exports = {
         template: 'src/index.html'
     }),new CleanWebpackPlugin()],
     output: {
+        publicPath: '/',
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
