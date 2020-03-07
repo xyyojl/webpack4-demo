@@ -7,7 +7,8 @@ module.exports = {
     // production: 会压缩代码
     // development: 不会压缩代码
     entry: {
-        main: './src/index.js'
+        main: './src/index.js',
+        sub: './src/index.js'
     },
     module: {
         rules: [{
@@ -41,7 +42,7 @@ module.exports = {
         template: 'src/index.html'
     }),new CleanWebpackPlugin()],
     output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     }
 }
