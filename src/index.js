@@ -41,7 +41,7 @@ btn.onclick = function(){
     document.body.appendChild(div);
 } */
 
-import counter from './counter';
+/* import counter from './counter';
 import number from './number';
 
 counter();
@@ -52,4 +52,15 @@ if(module.hot){
         document.body.removeChild(document.getElementById('number'));
         number();
     })
-}
+} */
+
+// 使用 Babel 处理 ES6 语法
+import "@babel/polyfill";
+const arr = [
+    new Promise(() => {}),
+    new Promise(() => {})
+];
+
+arr.map(item => {
+    console.log(item);
+})
