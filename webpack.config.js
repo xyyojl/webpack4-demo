@@ -7,9 +7,9 @@ module.exports = {
     // production: 会压缩代码
     // development: 不会压缩代码
     entry: {
-        main: './src/index.js',
-        sub: './src/index.js'
+        main: './src/index.js'
     },
+    devtool: 'source-map',
     module: {
         rules: [{
             test: /\.(jpg|png|gif)$/,
@@ -42,7 +42,7 @@ module.exports = {
         template: 'src/index.html'
     }),new CleanWebpackPlugin()],
     output: {
-        filename: '[name].js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
 }
