@@ -5,6 +5,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
+        loadsh: './src/loadsh.js',
         main: './src/index.js'
     },
     module: {
@@ -49,10 +50,12 @@ module.exports = {
     plugins: [new HtmlWebpackPlugin({
         template: 'src/index.html'
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+        root: path.resolve(__dirname, '../')
+    }),
     ],
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, '../dist')
     }
 }

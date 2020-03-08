@@ -78,6 +78,21 @@ class App extends Component{
 ReactDom.render(<App />,document.getElementById('root')); */
 
 // Tree Shaking 只支持 ES Module
-import {add} from './math.js';
+/* import {add} from './math.js';
 
-add(1,2);
+add(1,2); */
+
+// Code Splitting
+
+/* 
+    第一种方式：
+        首次访问页面时，加载 main.js (2mb)
+        当页面业务逻辑发生变化时，又要加载 2mb 的内容
+    第二种方式：
+        main.js 被拆分成 loadsh.js (1mb)
+        当页面业务逻辑发生变化时，只要加载 main.js 即可(1mb)
+*/
+
+console.log(_.join(['a','b','c'],'***'));
+// 此处省略大量的业务逻辑代码
+console.log(_.join(['a','b','c'],'***'));
