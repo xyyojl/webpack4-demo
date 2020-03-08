@@ -1,22 +1,11 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const webpack = require('webpack');
+
 
 module.exports = {
-    mode: 'production',
-    // production: 会压缩代码
-    // development: 不会压缩代码
     entry: {
         main: './src/index.js'
-    },
-    devtool: 'cheap-module-source-map',
-    devServer: {
-        contentBase: './dist',
-        open: true,
-        port: 8080,
-        hot: true,
-        hotOnly: true
     },
     module: {
         rules: [{
@@ -61,14 +50,9 @@ module.exports = {
         template: 'src/index.html'
     }),
     new CleanWebpackPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     ],
-    /* optimization: {
-        usedExports: true
-    }, */
     output: {
-        // publicPath: '/',
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     }
 }
