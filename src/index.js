@@ -93,6 +93,8 @@ add(1,2); */
         当页面业务逻辑发生变化时，只要加载 main.js 即可(1mb)
 */
 
+import _ from 'loadsh';
+
 console.log(_.join(['a','b','c'],'***'));
 // 此处省略大量的业务逻辑代码
 console.log(_.join(['a','b','c'],'***'));

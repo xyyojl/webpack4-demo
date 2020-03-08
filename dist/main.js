@@ -1,4 +1,54 @@
 /******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	function webpackJsonpCallback(data) {
+/******/ 		var chunkIds = data[0];
+/******/ 		var moreModules = data[1];
+/******/ 		var executeModules = data[2];
+/******/
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, resolves = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 				resolves.push(installedChunks[chunkId][0]);
+/******/ 			}
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
+/******/ 			}
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(data);
+/******/
+/******/ 		while(resolves.length) {
+/******/ 			resolves.shift()();
+/******/ 		}
+/******/
+/******/ 		// add entry modules from loaded chunk to deferred list
+/******/ 		deferredModules.push.apply(deferredModules, executeModules || []);
+/******/
+/******/ 		// run deferred modules when all chunks ready
+/******/ 		return checkDeferredModules();
+/******/ 	};
+/******/ 	function checkDeferredModules() {
+/******/ 		var result;
+/******/ 		for(var i = 0; i < deferredModules.length; i++) {
+/******/ 			var deferredModule = deferredModules[i];
+/******/ 			var fulfilled = true;
+/******/ 			for(var j = 1; j < deferredModule.length; j++) {
+/******/ 				var depId = deferredModule[j];
+/******/ 				if(installedChunks[depId] !== 0) fulfilled = false;
+/******/ 			}
+/******/ 			if(fulfilled) {
+/******/ 				deferredModules.splice(i--, 1);
+/******/ 				result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
+/******/ 			}
+/******/ 		}
+/******/
+/******/ 		return result;
+/******/ 	}
 /******/ 	function hotDisposeChunk(chunkId) {
 /******/ 		delete installedChunks[chunkId];
 /******/ 	}
@@ -63,7 +113,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "19b888415c53b47644ed";
+/******/ 	var hotCurrentHash = "98164e62065247e58816";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -258,7 +308,7 @@
 /******/ 				};
 /******/ 			});
 /******/ 			hotUpdate = {};
-/******/ 			var chunkId = "main";
+/******/ 			for(var chunkId in installedChunks)
 /******/ 			// eslint-disable-next-line no-lone-blocks
 /******/ 			{
 /******/ 				hotEnsureUpdateChunk(chunkId);
@@ -705,6 +755,15 @@
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 	// Promise = chunk loading, 0 = chunk loaded
+/******/ 	var installedChunks = {
+/******/ 		"main": 0
+/******/ 	};
+/******/
+/******/ 	var deferredModules = [];
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
@@ -788,9 +847,18 @@
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
+/******/ 	var jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+/******/ 	var oldJsonpFunction = jsonpArray.push.bind(jsonpArray);
+/******/ 	jsonpArray.push = webpackJsonpCallback;
+/******/ 	jsonpArray = jsonpArray.slice();
+/******/ 	for(var i = 0; i < jsonpArray.length; i++) webpackJsonpCallback(jsonpArray[i]);
+/******/ 	var parentJsonpFunction = oldJsonpFunction;
 /******/
-/******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire("./src/index.js")(__webpack_require__.s = "./src/index.js");
+/******/
+/******/ 	// add entry module to deferred list
+/******/ 	deferredModules.push(["./src/index.js","vendors~main"]);
+/******/ 	// run deferred modules when ready
+/******/ 	return checkDeferredModules();
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -799,11 +867,12 @@
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
+/*! no exports provided */
 /*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("// ES Moudule 模块引入方式\n\n/* import Header from './header.js'\r\nimport Content from './content.js'\r\nimport Sidebar from './sidebar.js' */\n// CommonJS 模块引入\n\n/* var Header = require('./header.js');\r\nvar Content = require('./content.js');\r\nvar Sidebar = require('./sidebar.js'); \r\n\r\nnew Header();\r\nnew Content();\r\nnew Sidebar(); \r\n */\n// ES module 引入图片\n// import './index.scss'\n\n/* import style from './index.scss';\r\nimport avatar from './avatar.jpg';\r\nvar img = new Image();\r\nimg.src = avatar;\r\nimg.classList.add(style.avatar);\r\n\r\nvar root = document.getElementById('root');\r\nroot.appendChild(img); */\n\n/* import createAvatar from './createAvatar';\r\n\r\ncreateAvatar();\r\n*/\n// Hot Module Replacement 练习\n\n/* import './style.css'\r\nvar btn = document.createElement('button');\r\nbtn.innerHTML = '新增';\r\ndocument.body.appendChild(btn);\r\n\r\nbtn.onclick = function(){\r\n    var div = document.createElement('div');\r\n    div.innerHTML = 'item';\r\n    document.body.appendChild(div);\r\n} */\n\n/* import counter from './counter';\r\nimport number from './number';\r\n\r\ncounter();\r\nnumber();\r\n\r\nif(module.hot){\r\n    module.hot.accept('./number',() => {\r\n        document.body.removeChild(document.getElementById('number'));\r\n        number();\r\n    })\r\n} */\n// 使用 Babel 处理 ES6 语法\n\n/* import \"@babel/polyfill\";\r\nconst arr = [\r\n    new Promise(() => {}),\r\n    new Promise(() => {})\r\n];\r\n\r\narr.map(item => {\r\n    console.log(item);\r\n}) */\n// 实现对React框架代码的打包\n\n/* import \"@babel/polyfill\";\r\nimport React, {Component} from 'react';\r\nimport ReactDom from 'react-dom';\r\n\r\nclass App extends Component{\r\n    render(){\r\n        return <div>Hello World</div>\r\n    }\r\n}\r\nReactDom.render(<App />,document.getElementById('root')); */\n// Tree Shaking 只支持 ES Module\n\n/* import {add} from './math.js';\r\n\r\nadd(1,2); */\n// Code Splitting\n\n/* \r\n    第一种方式：\r\n        首次访问页面时，加载 main.js (2mb)\r\n        当页面业务逻辑发生变化时，又要加载 2mb 的内容\r\n    第二种方式：\r\n        main.js 被拆分成 loadsh.js (1mb)\r\n        当页面业务逻辑发生变化时，只要加载 main.js 即可(1mb)\r\n*/\nconsole.log(_.join(['a', 'b', 'c'], '***')); // 此处省略大量的业务逻辑代码\n\nconsole.log(_.join(['a', 'b', 'c'], '***'));//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaW5kZXguanM/YjYzNSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBFUyBNb3VkdWxlIOaooeWdl+W8leWFpeaWueW8j1xyXG4vKiBpbXBvcnQgSGVhZGVyIGZyb20gJy4vaGVhZGVyLmpzJ1xyXG5pbXBvcnQgQ29udGVudCBmcm9tICcuL2NvbnRlbnQuanMnXHJcbmltcG9ydCBTaWRlYmFyIGZyb20gJy4vc2lkZWJhci5qcycgKi9cclxuXHJcbi8vIENvbW1vbkpTIOaooeWdl+W8leWFpVxyXG4vKiB2YXIgSGVhZGVyID0gcmVxdWlyZSgnLi9oZWFkZXIuanMnKTtcclxudmFyIENvbnRlbnQgPSByZXF1aXJlKCcuL2NvbnRlbnQuanMnKTtcclxudmFyIFNpZGViYXIgPSByZXF1aXJlKCcuL3NpZGViYXIuanMnKTsgXHJcblxyXG5uZXcgSGVhZGVyKCk7XHJcbm5ldyBDb250ZW50KCk7XHJcbm5ldyBTaWRlYmFyKCk7IFxyXG4gKi9cclxuXHJcbi8vIEVTIG1vZHVsZSDlvJXlhaXlm77niYdcclxuLy8gaW1wb3J0ICcuL2luZGV4LnNjc3MnXHJcbi8qIGltcG9ydCBzdHlsZSBmcm9tICcuL2luZGV4LnNjc3MnO1xyXG5pbXBvcnQgYXZhdGFyIGZyb20gJy4vYXZhdGFyLmpwZyc7XHJcbnZhciBpbWcgPSBuZXcgSW1hZ2UoKTtcclxuaW1nLnNyYyA9IGF2YXRhcjtcclxuaW1nLmNsYXNzTGlzdC5hZGQoc3R5bGUuYXZhdGFyKTtcclxuXHJcbnZhciByb290ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Jvb3QnKTtcclxucm9vdC5hcHBlbmRDaGlsZChpbWcpOyAqL1xyXG5cclxuLyogaW1wb3J0IGNyZWF0ZUF2YXRhciBmcm9tICcuL2NyZWF0ZUF2YXRhcic7XHJcblxyXG5jcmVhdGVBdmF0YXIoKTtcclxuKi9cclxuXHJcbi8vIEhvdCBNb2R1bGUgUmVwbGFjZW1lbnQg57uD5LmgXHJcbi8qIGltcG9ydCAnLi9zdHlsZS5jc3MnXHJcbnZhciBidG4gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdidXR0b24nKTtcclxuYnRuLmlubmVySFRNTCA9ICfmlrDlop4nO1xyXG5kb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGJ0bik7XHJcblxyXG5idG4ub25jbGljayA9IGZ1bmN0aW9uKCl7XHJcbiAgICB2YXIgZGl2ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XHJcbiAgICBkaXYuaW5uZXJIVE1MID0gJ2l0ZW0nO1xyXG4gICAgZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChkaXYpO1xyXG59ICovXHJcblxyXG4vKiBpbXBvcnQgY291bnRlciBmcm9tICcuL2NvdW50ZXInO1xyXG5pbXBvcnQgbnVtYmVyIGZyb20gJy4vbnVtYmVyJztcclxuXHJcbmNvdW50ZXIoKTtcclxubnVtYmVyKCk7XHJcblxyXG5pZihtb2R1bGUuaG90KXtcclxuICAgIG1vZHVsZS5ob3QuYWNjZXB0KCcuL251bWJlcicsKCkgPT4ge1xyXG4gICAgICAgIGRvY3VtZW50LmJvZHkucmVtb3ZlQ2hpbGQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ251bWJlcicpKTtcclxuICAgICAgICBudW1iZXIoKTtcclxuICAgIH0pXHJcbn0gKi9cclxuXHJcbi8vIOS9v+eUqCBCYWJlbCDlpITnkIYgRVM2IOivreazlVxyXG4vKiBpbXBvcnQgXCJAYmFiZWwvcG9seWZpbGxcIjtcclxuY29uc3QgYXJyID0gW1xyXG4gICAgbmV3IFByb21pc2UoKCkgPT4ge30pLFxyXG4gICAgbmV3IFByb21pc2UoKCkgPT4ge30pXHJcbl07XHJcblxyXG5hcnIubWFwKGl0ZW0gPT4ge1xyXG4gICAgY29uc29sZS5sb2coaXRlbSk7XHJcbn0pICovXHJcblxyXG4vLyDlrp7njrDlr7lSZWFjdOahhuaetuS7o+eggeeahOaJk+WMhVxyXG4vKiBpbXBvcnQgXCJAYmFiZWwvcG9seWZpbGxcIjtcclxuaW1wb3J0IFJlYWN0LCB7Q29tcG9uZW50fSBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCBSZWFjdERvbSBmcm9tICdyZWFjdC1kb20nO1xyXG5cclxuY2xhc3MgQXBwIGV4dGVuZHMgQ29tcG9uZW50e1xyXG4gICAgcmVuZGVyKCl7XHJcbiAgICAgICAgcmV0dXJuIDxkaXY+SGVsbG8gV29ybGQ8L2Rpdj5cclxuICAgIH1cclxufVxyXG5SZWFjdERvbS5yZW5kZXIoPEFwcCAvPixkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncm9vdCcpKTsgKi9cclxuXHJcbi8vIFRyZWUgU2hha2luZyDlj6rmlK/mjIEgRVMgTW9kdWxlXHJcbi8qIGltcG9ydCB7YWRkfSBmcm9tICcuL21hdGguanMnO1xyXG5cclxuYWRkKDEsMik7ICovXHJcblxyXG4vLyBDb2RlIFNwbGl0dGluZ1xyXG5cclxuLyogXHJcbiAgICDnrKzkuIDnp43mlrnlvI/vvJpcclxuICAgICAgICDpppbmrKHorr/pl67pobXpnaLml7bvvIzliqDovb0gbWFpbi5qcyAoMm1iKVxyXG4gICAgICAgIOW9k+mhtemdouS4muWKoemAu+i+keWPkeeUn+WPmOWMluaXtu+8jOWPiOimgeWKoOi9vSAybWIg55qE5YaF5a65XHJcbiAgICDnrKzkuoznp43mlrnlvI/vvJpcclxuICAgICAgICBtYWluLmpzIOiiq+aLhuWIhuaIkCBsb2Fkc2guanMgKDFtYilcclxuICAgICAgICDlvZPpobXpnaLkuJrliqHpgLvovpHlj5HnlJ/lj5jljJbml7bvvIzlj6ropoHliqDovb0gbWFpbi5qcyDljbPlj68oMW1iKVxyXG4qL1xyXG5cclxuY29uc29sZS5sb2coXy5qb2luKFsnYScsJ2InLCdjJ10sJyoqKicpKTtcclxuLy8g5q2k5aSE55yB55Wl5aSn6YeP55qE5Lia5Yqh6YC76L6R5Luj56CBXHJcbmNvbnNvbGUubG9nKF8uam9pbihbJ2EnLCdiJywnYyddLCcqKionKSk7Il0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQUE7OztBQUlBO0FBQ0E7QUFBQTs7Ozs7Ozs7QUFTQTtBQUNBO0FBQ0E7QUFBQTs7Ozs7Ozs7O0FBU0E7QUFDQTs7O0FBSUE7QUFDQTtBQUFBOzs7Ozs7Ozs7OztBQVdBOzs7Ozs7Ozs7Ozs7QUFhQTtBQUNBO0FBQUE7Ozs7Ozs7OztBQVVBO0FBQ0E7QUFBQTs7Ozs7Ozs7OztBQVdBO0FBQ0E7QUFBQTtBQUNBOztBQUdBO0FBQ0E7QUFDQTs7Ozs7Ozs7QUFTQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var loadsh__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! loadsh */ \"./node_modules/loadsh/lodash.js\");\n/* harmony import */ var loadsh__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(loadsh__WEBPACK_IMPORTED_MODULE_0__);\n// ES Moudule 模块引入方式\n\n/* import Header from './header.js'\r\nimport Content from './content.js'\r\nimport Sidebar from './sidebar.js' */\n// CommonJS 模块引入\n\n/* var Header = require('./header.js');\r\nvar Content = require('./content.js');\r\nvar Sidebar = require('./sidebar.js'); \r\n\r\nnew Header();\r\nnew Content();\r\nnew Sidebar(); \r\n */\n// ES module 引入图片\n// import './index.scss'\n\n/* import style from './index.scss';\r\nimport avatar from './avatar.jpg';\r\nvar img = new Image();\r\nimg.src = avatar;\r\nimg.classList.add(style.avatar);\r\n\r\nvar root = document.getElementById('root');\r\nroot.appendChild(img); */\n\n/* import createAvatar from './createAvatar';\r\n\r\ncreateAvatar();\r\n*/\n// Hot Module Replacement 练习\n\n/* import './style.css'\r\nvar btn = document.createElement('button');\r\nbtn.innerHTML = '新增';\r\ndocument.body.appendChild(btn);\r\n\r\nbtn.onclick = function(){\r\n    var div = document.createElement('div');\r\n    div.innerHTML = 'item';\r\n    document.body.appendChild(div);\r\n} */\n\n/* import counter from './counter';\r\nimport number from './number';\r\n\r\ncounter();\r\nnumber();\r\n\r\nif(module.hot){\r\n    module.hot.accept('./number',() => {\r\n        document.body.removeChild(document.getElementById('number'));\r\n        number();\r\n    })\r\n} */\n// 使用 Babel 处理 ES6 语法\n\n/* import \"@babel/polyfill\";\r\nconst arr = [\r\n    new Promise(() => {}),\r\n    new Promise(() => {})\r\n];\r\n\r\narr.map(item => {\r\n    console.log(item);\r\n}) */\n// 实现对React框架代码的打包\n\n/* import \"@babel/polyfill\";\r\nimport React, {Component} from 'react';\r\nimport ReactDom from 'react-dom';\r\n\r\nclass App extends Component{\r\n    render(){\r\n        return <div>Hello World</div>\r\n    }\r\n}\r\nReactDom.render(<App />,document.getElementById('root')); */\n// Tree Shaking 只支持 ES Module\n\n/* import {add} from './math.js';\r\n\r\nadd(1,2); */\n// Code Splitting\n\n/* \r\n    第一种方式：\r\n        首次访问页面时，加载 main.js (2mb)\r\n        当页面业务逻辑发生变化时，又要加载 2mb 的内容\r\n    第二种方式：\r\n        main.js 被拆分成 loadsh.js (1mb)\r\n        当页面业务逻辑发生变化时，只要加载 main.js 即可(1mb)\r\n*/\n\nconsole.log(loadsh__WEBPACK_IMPORTED_MODULE_0___default.a.join(['a', 'b', 'c'], '***')); // 此处省略大量的业务逻辑代码\n\nconsole.log(loadsh__WEBPACK_IMPORTED_MODULE_0___default.a.join(['a', 'b', 'c'], '***'));//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9zcmMvaW5kZXguanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvaW5kZXguanM/YjYzNSJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBFUyBNb3VkdWxlIOaooeWdl+W8leWFpeaWueW8j1xyXG4vKiBpbXBvcnQgSGVhZGVyIGZyb20gJy4vaGVhZGVyLmpzJ1xyXG5pbXBvcnQgQ29udGVudCBmcm9tICcuL2NvbnRlbnQuanMnXHJcbmltcG9ydCBTaWRlYmFyIGZyb20gJy4vc2lkZWJhci5qcycgKi9cclxuXHJcbi8vIENvbW1vbkpTIOaooeWdl+W8leWFpVxyXG4vKiB2YXIgSGVhZGVyID0gcmVxdWlyZSgnLi9oZWFkZXIuanMnKTtcclxudmFyIENvbnRlbnQgPSByZXF1aXJlKCcuL2NvbnRlbnQuanMnKTtcclxudmFyIFNpZGViYXIgPSByZXF1aXJlKCcuL3NpZGViYXIuanMnKTsgXHJcblxyXG5uZXcgSGVhZGVyKCk7XHJcbm5ldyBDb250ZW50KCk7XHJcbm5ldyBTaWRlYmFyKCk7IFxyXG4gKi9cclxuXHJcbi8vIEVTIG1vZHVsZSDlvJXlhaXlm77niYdcclxuLy8gaW1wb3J0ICcuL2luZGV4LnNjc3MnXHJcbi8qIGltcG9ydCBzdHlsZSBmcm9tICcuL2luZGV4LnNjc3MnO1xyXG5pbXBvcnQgYXZhdGFyIGZyb20gJy4vYXZhdGFyLmpwZyc7XHJcbnZhciBpbWcgPSBuZXcgSW1hZ2UoKTtcclxuaW1nLnNyYyA9IGF2YXRhcjtcclxuaW1nLmNsYXNzTGlzdC5hZGQoc3R5bGUuYXZhdGFyKTtcclxuXHJcbnZhciByb290ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Jvb3QnKTtcclxucm9vdC5hcHBlbmRDaGlsZChpbWcpOyAqL1xyXG5cclxuLyogaW1wb3J0IGNyZWF0ZUF2YXRhciBmcm9tICcuL2NyZWF0ZUF2YXRhcic7XHJcblxyXG5jcmVhdGVBdmF0YXIoKTtcclxuKi9cclxuXHJcbi8vIEhvdCBNb2R1bGUgUmVwbGFjZW1lbnQg57uD5LmgXHJcbi8qIGltcG9ydCAnLi9zdHlsZS5jc3MnXHJcbnZhciBidG4gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdidXR0b24nKTtcclxuYnRuLmlubmVySFRNTCA9ICfmlrDlop4nO1xyXG5kb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGJ0bik7XHJcblxyXG5idG4ub25jbGljayA9IGZ1bmN0aW9uKCl7XHJcbiAgICB2YXIgZGl2ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7XHJcbiAgICBkaXYuaW5uZXJIVE1MID0gJ2l0ZW0nO1xyXG4gICAgZG9jdW1lbnQuYm9keS5hcHBlbmRDaGlsZChkaXYpO1xyXG59ICovXHJcblxyXG4vKiBpbXBvcnQgY291bnRlciBmcm9tICcuL2NvdW50ZXInO1xyXG5pbXBvcnQgbnVtYmVyIGZyb20gJy4vbnVtYmVyJztcclxuXHJcbmNvdW50ZXIoKTtcclxubnVtYmVyKCk7XHJcblxyXG5pZihtb2R1bGUuaG90KXtcclxuICAgIG1vZHVsZS5ob3QuYWNjZXB0KCcuL251bWJlcicsKCkgPT4ge1xyXG4gICAgICAgIGRvY3VtZW50LmJvZHkucmVtb3ZlQ2hpbGQoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ251bWJlcicpKTtcclxuICAgICAgICBudW1iZXIoKTtcclxuICAgIH0pXHJcbn0gKi9cclxuXHJcbi8vIOS9v+eUqCBCYWJlbCDlpITnkIYgRVM2IOivreazlVxyXG4vKiBpbXBvcnQgXCJAYmFiZWwvcG9seWZpbGxcIjtcclxuY29uc3QgYXJyID0gW1xyXG4gICAgbmV3IFByb21pc2UoKCkgPT4ge30pLFxyXG4gICAgbmV3IFByb21pc2UoKCkgPT4ge30pXHJcbl07XHJcblxyXG5hcnIubWFwKGl0ZW0gPT4ge1xyXG4gICAgY29uc29sZS5sb2coaXRlbSk7XHJcbn0pICovXHJcblxyXG4vLyDlrp7njrDlr7lSZWFjdOahhuaetuS7o+eggeeahOaJk+WMhVxyXG4vKiBpbXBvcnQgXCJAYmFiZWwvcG9seWZpbGxcIjtcclxuaW1wb3J0IFJlYWN0LCB7Q29tcG9uZW50fSBmcm9tICdyZWFjdCc7XHJcbmltcG9ydCBSZWFjdERvbSBmcm9tICdyZWFjdC1kb20nO1xyXG5cclxuY2xhc3MgQXBwIGV4dGVuZHMgQ29tcG9uZW50e1xyXG4gICAgcmVuZGVyKCl7XHJcbiAgICAgICAgcmV0dXJuIDxkaXY+SGVsbG8gV29ybGQ8L2Rpdj5cclxuICAgIH1cclxufVxyXG5SZWFjdERvbS5yZW5kZXIoPEFwcCAvPixkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncm9vdCcpKTsgKi9cclxuXHJcbi8vIFRyZWUgU2hha2luZyDlj6rmlK/mjIEgRVMgTW9kdWxlXHJcbi8qIGltcG9ydCB7YWRkfSBmcm9tICcuL21hdGguanMnO1xyXG5cclxuYWRkKDEsMik7ICovXHJcblxyXG4vLyBDb2RlIFNwbGl0dGluZ1xyXG5cclxuLyogXHJcbiAgICDnrKzkuIDnp43mlrnlvI/vvJpcclxuICAgICAgICDpppbmrKHorr/pl67pobXpnaLml7bvvIzliqDovb0gbWFpbi5qcyAoMm1iKVxyXG4gICAgICAgIOW9k+mhtemdouS4muWKoemAu+i+keWPkeeUn+WPmOWMluaXtu+8jOWPiOimgeWKoOi9vSAybWIg55qE5YaF5a65XHJcbiAgICDnrKzkuoznp43mlrnlvI/vvJpcclxuICAgICAgICBtYWluLmpzIOiiq+aLhuWIhuaIkCBsb2Fkc2guanMgKDFtYilcclxuICAgICAgICDlvZPpobXpnaLkuJrliqHpgLvovpHlj5HnlJ/lj5jljJbml7bvvIzlj6ropoHliqDovb0gbWFpbi5qcyDljbPlj68oMW1iKVxyXG4qL1xyXG5cclxuaW1wb3J0IF8gZnJvbSAnbG9hZHNoJztcclxuXHJcbmNvbnNvbGUubG9nKF8uam9pbihbJ2EnLCdiJywnYyddLCcqKionKSk7XHJcbi8vIOatpOWkhOecgeeVpeWkp+mHj+eahOS4muWKoemAu+i+keS7o+eggVxyXG5jb25zb2xlLmxvZyhfLmpvaW4oWydhJywnYicsJ2MnXSwnKioqJykpOyJdLCJtYXBwaW5ncyI6IkFBQUE7QUFBQTtBQUFBO0FBQUE7QUFDQTtBQUFBOzs7QUFJQTtBQUNBO0FBQUE7Ozs7Ozs7O0FBU0E7QUFDQTtBQUNBO0FBQUE7Ozs7Ozs7OztBQVNBO0FBQ0E7OztBQUlBO0FBQ0E7QUFBQTs7Ozs7Ozs7Ozs7QUFXQTs7Ozs7Ozs7Ozs7O0FBYUE7QUFDQTtBQUFBOzs7Ozs7Ozs7QUFVQTtBQUNBO0FBQUE7Ozs7Ozs7Ozs7QUFXQTtBQUNBO0FBQUE7QUFDQTs7QUFHQTtBQUNBO0FBQ0E7Ozs7Ozs7O0FBU0E7QUFFQTtBQUNBO0FBQ0EiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./src/index.js\n");
 
 /***/ })
 
