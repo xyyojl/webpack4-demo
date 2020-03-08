@@ -66,7 +66,7 @@ arr.map(item => {
 }) */
 
 // 实现对React框架代码的打包
-import "@babel/polyfill";
+/* import "@babel/polyfill";
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
 
@@ -75,4 +75,9 @@ class App extends Component{
         return <div>Hello World</div>
     }
 }
-ReactDom.render(<App />,document.getElementById('root'));
+ReactDom.render(<App />,document.getElementById('root')); */
+
+// Tree Shaking 只支持 ES Module
+import {add} from './math.js';
+
+add(1,2);

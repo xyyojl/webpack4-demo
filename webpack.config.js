@@ -10,7 +10,7 @@ module.exports = {
     entry: {
         main: './src/index.js'
     },
-    // devtool: 'source-map',
+    // devtool: 'cheap-module-eval-source-map',
     devServer: {
         contentBase: './dist',
         open: true,
@@ -63,8 +63,11 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     ],
+    optimization: {
+        usedExports: true
+    },
     output: {
-        publicPath: '/',
+        // publicPath: '/',
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
