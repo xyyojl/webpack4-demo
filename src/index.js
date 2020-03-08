@@ -55,7 +55,7 @@ if(module.hot){
 } */
 
 // 使用 Babel 处理 ES6 语法
-import "@babel/polyfill";
+/* import "@babel/polyfill";
 const arr = [
     new Promise(() => {}),
     new Promise(() => {})
@@ -63,4 +63,16 @@ const arr = [
 
 arr.map(item => {
     console.log(item);
-})
+}) */
+
+// 实现对React框架代码的打包
+import "@babel/polyfill";
+import React, {Component} from 'react';
+import ReactDom from 'react-dom';
+
+class App extends Component{
+    render(){
+        return <div>Hello World</div>
+    }
+}
+ReactDom.render(<App />,document.getElementById('root'));
