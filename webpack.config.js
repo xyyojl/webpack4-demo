@@ -4,13 +4,13 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     // production: 会压缩代码
     // development: 不会压缩代码
     entry: {
         main: './src/index.js'
     },
-    // devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-source-map',
     devServer: {
         contentBase: './dist',
         open: true,
@@ -63,9 +63,9 @@ module.exports = {
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     ],
-    optimization: {
+    /* optimization: {
         usedExports: true
-    },
+    }, */
     output: {
         // publicPath: '/',
         filename: 'bundle.js',
