@@ -121,15 +121,22 @@ console.log(_.join(['a','b','c'],'***')); */
 */
 
 //  Lazy Loading 懒加载
-function getComponent(){
-    return import(/* webpackChunkName:"lodash" */ 'lodash').then(({default: _ }) => {
-        var element = document.createElement('div');
-        element.innerHTML = _.join(['a','b'],'-')
-        return element;
-    })
-}
-document.addEventListener('click',function(){
-    getComponent().then(element => {
-        document.body.appendChild(element);
+// function getComponent(){
+//     return import(/* webpackChunkName:"lodash" */ 'lodash').then(({default: _ }) => {
+//         var element = document.createElement('div');
+//         element.innerHTML = _.join(['a','b'],'-')
+//         return element;
+//     })
+// }
+// document.addEventListener('click',function(){
+//     getComponent().then(element => {
+//         document.body.appendChild(element);
+//     })
+// })
+
+// 前端性能优化的重点：code coverage
+document.addEventListener('click',() => {
+    import(/* webpaclPrefetch: true */'./click.js').then(({default: func}) => {
+        func();
     })
 })
