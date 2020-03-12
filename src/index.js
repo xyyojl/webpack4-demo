@@ -102,16 +102,16 @@ console.log(_.join(['a','b','c'],'***')); */
 
 
 //  异步代码分割
-function getComponent(){
-    return import(/* webpackChunkName:"lodash" */ 'lodash').then(({default: _ }) => {
-        var element = document.createElement('div');
-        element.innerHTML = _.join(['a','b'],'-')
-        return element;
-    })
-}
-getComponent().then(element => {
-    document.body.appendChild(element);
-})
+// function getComponent(){
+//     return import(/* webpackChunkName:"lodash" */ 'lodash').then(({default: _ }) => {
+//         var element = document.createElement('div');
+//         element.innerHTML = _.join(['a','b'],'-')
+//         return element;
+//     })
+// }
+// getComponent().then(element => {
+//     document.body.appendChild(element);
+// })
 /* 
     小总结：
         代码分割，和 webpack 无关
@@ -119,3 +119,17 @@ getComponent().then(element => {
             1. 同步代码：只需要在 webpack.common.js 中做 optimization 的配置
             2. 异步代码(import)：无需做任何配置，会自动进行代码分割
 */
+
+//  Lazy Loading 懒加载
+function getComponent(){
+    return import(/* webpackChunkName:"lodash" */ 'lodash').then(({default: _ }) => {
+        var element = document.createElement('div');
+        element.innerHTML = _.join(['a','b'],'-')
+        return element;
+    })
+}
+document.addEventListener('click',function(){
+    getComponent().then(element => {
+        document.body.appendChild(element);
+    })
+})
