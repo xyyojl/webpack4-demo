@@ -1,6 +1,6 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             loader: 'babel-loader'
-        },{
+        }, {
             test: /\.(jpg|png|gif)$/,
             use: {
                 loader: 'url-loader',
@@ -24,7 +24,7 @@ module.exports = {
                     limit: 204800
                 }
             }
-        },{
+        }, {
             test: /\.scss$/,
             use: [
                 'style-loader',
@@ -38,7 +38,7 @@ module.exports = {
                 'sass-loader',
                 'postcss-loader'
             ]
-        },{
+        }, {
             test: /\.css$/,
             use: [
                 'style-loader',
@@ -56,7 +56,25 @@ module.exports = {
     ],
     optimization: {
         splitChunks: {
-            chunks: 'all'
+            chunks: 'all',
+            minSize: 30000,
+            maxSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 6,
+            maxInitialRequests: 4,
+            automaticNameDelimiter: '~',
+            automaticNameMaxLength: 30,
+            cacheGroups: {
+                defaultVendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
         }
     },
     output: {

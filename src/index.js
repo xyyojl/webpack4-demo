@@ -98,12 +98,12 @@ add(1,2); */
 
 console.log(_.join(['a','b','c'],'***'));
 // 此处省略大量的业务逻辑代码
-console.log(_.join(['a','b','c'],'***'));
- */
+console.log(_.join(['a','b','c'],'***')); */
+
 
 //  异步代码分割
 function getComponent(){
-    return import('lodash').then(({default: _ }) => {
+    return import(/* webpackChunkName:"lodash" */ 'lodash').then(({default: _ }) => {
         var element = document.createElement('div');
         element.innerHTML = _.join(['a','b'],'-')
         return element;
