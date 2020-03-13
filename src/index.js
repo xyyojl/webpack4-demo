@@ -154,7 +154,7 @@ dom.html(_.join(['aa','bb'],'--'));
 $('body').append(dom); */
 
 // shimming
-import _ from 'lodash';
+/* import _ from 'lodash';
 import $ from 'jquery';
 import {ui} from './jquery.ui';
 
@@ -162,5 +162,18 @@ ui();
 
 const dom = $('<div>');
 dom.html(_.join(['aa','bb'],'--'));
-$('body').append(dom);
-// console.log(this === window);
+$('body').append(dom); */
+
+// pwa 的配置
+console.log('hello world');
+
+if('serviceWorker' in navigator){
+    window.addEventListener('load',() => {
+        navigator.serviceWorker.register('./service-worker.js')
+        .then(registeration => {
+            console.log('service-worker registed');
+        }).catch(error => {
+            console.log('service-worker registed error');
+        })
+    })
+}
