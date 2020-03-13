@@ -146,9 +146,21 @@ console.log(_.join(['a','b','c'],'***')); */
 // console.log('hhhh')
 
 // Webpack 与浏览器缓存
-import _ from 'lodash';
+/* import _ from 'lodash';
 import $ from 'jquery';
 
 const dom = $('<div>');
 dom.html(_.join(['aa','bb'],'--'));
+$('body').append(dom); */
+
+// shimming
+import _ from 'lodash';
+import $ from 'jquery';
+import {ui} from './jquery.ui';
+
+ui();
+
+const dom = $('<div>');
+dom.html(_.join(['aa','bb'],'--'));
 $('body').append(dom);
+// console.log(this === window);

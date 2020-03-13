@@ -1,7 +1,7 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -12,7 +12,11 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            use: [{
+                loader: 'babel-loader'
+            }/* ,{ // 出错
+                loader: 'imports-loader?this=>window'
+            } */]
         }, {
             test: /\.(jpg|png|gif)$/,
             use: {
@@ -32,6 +36,11 @@ module.exports = {
     new CleanWebpackPlugin({
         root: path.resolve(__dirname, '../')
     }),
+    new webpack.ProvidePlugin({
+        $: 'jquery',
+        _: 'lodash',
+        _join: ['lodash','join']
+    })
     ],
     optimization: {
         usedExports: true,
