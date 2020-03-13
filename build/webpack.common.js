@@ -39,9 +39,6 @@ module.exports = {
             chunks: 'all'
         }
     },
-    output: {
-        filename: '[name].js',
-        chunkFilename: '[name].chunk.js',
-        path: path.resolve(__dirname, '../dist')
-    }
+    performance: false,
+    
 }

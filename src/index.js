@@ -135,12 +135,20 @@ console.log(_.join(['a','b','c'],'***')); */
 // })
 
 // 前端性能优化的重点：code coverage
-document.addEventListener('click',() => {
-    import(/* webpaclPrefetch: true */'./click.js').then(({default: func}) => {
-        func();
-    })
-})
+// document.addEventListener('click',() => {
+//     import(/* webpaclPrefetch: true */'./click.js').then(({default: func}) => {
+//         func();
+//     })
+// })
 
-import './style.css';
+// import './style.css';
 
-console.log('hhhh')
+// console.log('hhhh')
+
+// Webpack 与浏览器缓存
+import _ from 'lodash';
+import $ from 'jquery';
+
+const dom = $('<div>');
+dom.html(_.join(['aa','bb'],'--'));
+$('body').append(dom);

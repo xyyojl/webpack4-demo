@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const prodConfig  = {
     mode: 'production',
-    devtool: 'cheap-module-source-map',
+    // devtool: 'cheap-module-source-map',
     module: {
         rules: [ {
             test: /\.scss$/,
@@ -38,7 +38,11 @@ const prodConfig  = {
             filename: '[name].css',
             chunkFilename: '[name].chunk.css',
         })
-    ]
+    ],
+    output: {
+        filename: '[name].[contenthash].js',
+        chunkFilename: '[name].[contenthash].chunk.js',
+    }
 }
 
 module.exports = merge(commonConfig, prodConfig);
