@@ -24,27 +24,6 @@ module.exports = {
                     limit: 204800
                 }
             }
-        }, {
-            test: /\.scss$/,
-            use: [
-                'style-loader',
-                {
-                    loader: 'css-loader',
-                    options: {
-                        importLoaders: 2,
-                        modules: true
-                    }
-                },
-                'sass-loader',
-                'postcss-loader'
-            ]
-        }, {
-            test: /\.css$/,
-            use: [
-                'style-loader',
-                'css-loader',
-                'postcss-loader'
-            ]
         }]
     },
     plugins: [new HtmlWebpackPlugin({
@@ -55,30 +34,14 @@ module.exports = {
     }),
     ],
     optimization: {
+        usedExports: true,
         splitChunks: {
-            chunks: 'all',
-            minSize: 30000,
-            maxSize: 0,
-            minChunks: 1,
-            maxAsyncRequests: 6,
-            maxInitialRequests: 4,
-            automaticNameDelimiter: '~',
-            automaticNameMaxLength: 30,
-            cacheGroups: {
-                defaultVendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
+            chunks: 'all'
         }
     },
     output: {
         filename: '[name].js',
+        chunkFilename: '[name].chunk.js',
         path: path.resolve(__dirname, '../dist')
     }
 }

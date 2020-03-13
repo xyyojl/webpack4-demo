@@ -2,9 +2,9 @@
   "errors": [],
   "warnings": [],
   "version": "4.41.6",
-  "hash": "383dbd674704df676d70",
-  "time": 1142,
-  "builtAt": 1584025074940,
+  "hash": "f975ec0d0794e1ab945e",
+  "time": 1601,
+  "builtAt": 1584066324585,
   "publicPath": "",
   "outputPath": "D:\\WorkSpace\\hunger\\webpack4-demo\\dist",
   "assetsByChunkName": {
@@ -12,7 +12,7 @@
   },
   "assets": [
     {
-      "name": "0.js",
+      "name": "0.chunk.js",
       "size": 1250,
       "chunks": [
         0
@@ -31,7 +31,7 @@
     },
     {
       "name": "main.js",
-      "size": 44350,
+      "size": 44356,
       "chunks": [
         "main"
       ],
@@ -76,7 +76,7 @@
       "size": 171,
       "names": [],
       "files": [
-        "0.js"
+        "0.chunk.js"
       ],
       "hash": "8ba75598cc5f2bea8304",
       "siblings": [],
@@ -109,14 +109,14 @@
               "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\babel-loader\\lib\\index.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.js",
               "name": "./src/index.js",
               "profile": {
-                "factory": 51,
-                "building": 898
+                "factory": 56,
+                "building": 1346
               }
             }
           ],
           "profile": {
             "factory": 2,
-            "building": 95
+            "building": 97
           },
           "failed": false,
           "errors": 0,
@@ -167,7 +167,7 @@
       "files": [
         "main.js"
       ],
-      "hash": "0975e90f0215bff7d5d1",
+      "hash": "11bba1f8f70ec388ea7b",
       "siblings": [],
       "parents": [],
       "children": [
@@ -194,8 +194,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 51,
-            "building": 898
+            "factory": 56,
+            "building": 1346
           },
           "failed": false,
           "errors": 0,
@@ -256,14 +256,14 @@
           "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\babel-loader\\lib\\index.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.js",
           "name": "./src/index.js",
           "profile": {
-            "factory": 51,
-            "building": 898
+            "factory": 56,
+            "building": 1346
           }
         }
       ],
       "profile": {
         "factory": 2,
-        "building": 95
+        "building": 97
       },
       "failed": false,
       "errors": 0,
@@ -307,8 +307,8 @@
       "issuerName": null,
       "issuerPath": null,
       "profile": {
-        "factory": 51,
-        "building": 898
+        "factory": 56,
+        "building": 1346
       },
       "failed": false,
       "errors": 0,
@@ -420,8 +420,8 @@
               "issuerName": null,
               "issuerPath": null,
               "profile": {
-                "factory": 28,
-                "building": 22
+                "factory": 30,
+                "building": 27
               },
               "failed": false,
               "errors": 0,
@@ -466,14 +466,14 @@
                   "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\html-webpack-plugin\\lib\\loader.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.html",
                   "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
                   "profile": {
-                    "factory": 28,
-                    "building": 22
+                    "factory": 30,
+                    "building": 27
                   }
                 }
               ],
               "profile": {
                 "factory": 5,
-                "building": 357
+                "building": 439
               },
               "failed": false,
               "errors": 0,
@@ -519,8 +519,8 @@
                   "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\html-webpack-plugin\\lib\\loader.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.html",
                   "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
                   "profile": {
-                    "factory": 28,
-                    "building": 22
+                    "factory": 30,
+                    "building": 27
                   }
                 },
                 {
@@ -529,12 +529,12 @@
                   "name": "./node_modules/lodash/lodash.js",
                   "profile": {
                     "factory": 5,
-                    "building": 357
+                    "building": 439
                   }
                 }
               ],
               "profile": {
-                "factory": 546,
+                "factory": 911,
                 "building": 3
               },
               "failed": false,
@@ -581,8 +581,8 @@
                   "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\html-webpack-plugin\\lib\\loader.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.html",
                   "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
                   "profile": {
-                    "factory": 28,
-                    "building": 22
+                    "factory": 30,
+                    "building": 27
                   }
                 },
                 {
@@ -591,12 +591,12 @@
                   "name": "./node_modules/lodash/lodash.js",
                   "profile": {
                     "factory": 5,
-                    "building": 357
+                    "building": 439
                   }
                 }
               ],
               "profile": {
-                "factory": 546,
+                "factory": 911,
                 "building": 3
               },
               "failed": false,
@@ -654,8 +654,8 @@
           "issuerName": null,
           "issuerPath": null,
           "profile": {
-            "factory": 28,
-            "building": 22
+            "factory": 30,
+            "building": 27
           },
           "failed": false,
           "errors": 0,
@@ -700,14 +700,14 @@
               "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\html-webpack-plugin\\lib\\loader.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.html",
               "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
               "profile": {
-                "factory": 28,
-                "building": 22
+                "factory": 30,
+                "building": 27
               }
             }
           ],
           "profile": {
             "factory": 5,
-            "building": 357
+            "building": 439
           },
           "failed": false,
           "errors": 0,
@@ -753,8 +753,8 @@
               "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\html-webpack-plugin\\lib\\loader.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.html",
               "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
               "profile": {
-                "factory": 28,
-                "building": 22
+                "factory": 30,
+                "building": 27
               }
             },
             {
@@ -763,12 +763,12 @@
               "name": "./node_modules/lodash/lodash.js",
               "profile": {
                 "factory": 5,
-                "building": 357
+                "building": 439
               }
             }
           ],
           "profile": {
-            "factory": 546,
+            "factory": 911,
             "building": 3
           },
           "failed": false,
@@ -815,8 +815,8 @@
               "identifier": "D:\\WorkSpace\\hunger\\webpack4-demo\\node_modules\\html-webpack-plugin\\lib\\loader.js!D:\\WorkSpace\\hunger\\webpack4-demo\\src\\index.html",
               "name": "./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html",
               "profile": {
-                "factory": 28,
-                "building": 22
+                "factory": 30,
+                "building": 27
               }
             },
             {
@@ -825,12 +825,12 @@
               "name": "./node_modules/lodash/lodash.js",
               "profile": {
                 "factory": 5,
-                "building": 357
+                "building": 439
               }
             }
           ],
           "profile": {
-            "factory": 546,
+            "factory": 911,
             "building": 3
           },
           "failed": false,

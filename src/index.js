@@ -140,3 +140,7 @@ document.addEventListener('click',() => {
         func();
     })
 })
+
+import './style.css';
+
+console.log('hhhh')
