@@ -6,6 +6,7 @@ module.exports = function (source) {
 
     setTimeout(() => {
         const result = source.replace('World',options.name);
+        // console.log('异步代码执行了： 2')
         callback(null,result);
     }, 1000);
 

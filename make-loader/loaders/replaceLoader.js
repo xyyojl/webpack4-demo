@@ -7,5 +7,8 @@ module.exports = function (source) {
 
     // 使用 loader-utils 
     const options = loaderUtils.getOptions(this);
+    // console.log('同步代码执行了： 1')
+    // console.log('options.name:',options.name); // JavaScript
+    // console.log(source.replace('World',options.name));
     return source.replace('World',options.name);
 }

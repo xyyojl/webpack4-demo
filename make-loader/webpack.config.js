@@ -5,7 +5,7 @@ module.exports = {
     entry: {
         main: './src/index.js'
     },
-    resolveLoaders: {
+    resolveLoader: {
         modules: ['node_modules','./loaders']
     },
     module: {
@@ -17,7 +17,7 @@ module.exports = {
                     name: 'JavaScript'
                 }
             },{
-                loader: 'replaceLoaderAsync.js',
+                loader: 'replaceLoaderAsync',
                 options: {
                     name: 'Webpack'
                 }
