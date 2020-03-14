@@ -67,7 +67,32 @@ const makeDependenciesGraph = (entry) => {
     // console.log(graph);
     // console.log(graphArray);
 }
+// console.log(entry) // 打印出来的是 ./src/index.js 外面并没有引号，所以下面的 '${entry}' 外面要加引号。
+// 拼接一段js 代码而不是去运行js 代码，以字符串的形式构建内容
+// 下面的 const exports = {}; 这里必须要加分号否则js引擎会报错。以 “(”、“[”、“/”、“+”、或 “-” 开始，那么它极有可能和前一条语句合在一起解释。所以前面需要加分号。
+const generateCode = (entry) => {
+    // 需要进行 JSON.stringify
+    const graph = JSON.stringify(makeDependenciesGraph('./src/index.js'));
+    // 注意下面graph[module] module的作用域。
+    // graph[module].code : 依赖图谱下的module，也就是 graph 下的键名是相对路径，但是需要的是真正的路径
 
+    return `
+        (function(graph){
+            function require(module){
+                // 获取真正的路径
+                function localRequire(relativePath){
+                    return require(graph[module].dependencies[relativePath]);
+                }
+                const exports = {};
+                (function(require, exports, code){
+                    eval(code);
+                })(localRequire, exports, graph[module].code);
+                return exports;
+            }
+            require('${entry}');
+        })(${graph});
+    `
+}
 
-const graghInfo = makeDependenciesGraph('./src/index.js');
-console.log(graghInfo);
+const code = generateCode('./src/index.js');
+console.log(code);
