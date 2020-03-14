@@ -8,7 +8,17 @@ module.exports = {
     module: {
         rules: [{
             test: /\.js/,
-            use: [path.resolve(__dirname,'./loaders/replaceLoader.js')]
+            use: [{
+                loader: path.resolve(__dirname,'./loaders/replaceLoader.js'),
+                options: {
+                    name: 'JavaScript'
+                }
+            },{
+                loader: path.resolve(__dirname,'./loaders/replaceLoaderAsync.js'),
+                options: {
+                    name: 'Webpack'
+                }
+            }]
         }]
     },
     output: {
